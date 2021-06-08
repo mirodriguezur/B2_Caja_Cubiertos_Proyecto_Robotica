@@ -1,0 +1,47 @@
+MODULE Module1
+    CONST robtarget Target_10:=[[-23.679886895,30.000008261,64.99887281],[0.000000136,-0.000000057,1,0.0000001],[0,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_20:=[[-23.679890572,30.000002341,6.997147245],[-0.000000044,-0.000000082,1,-0.000000191],[0,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_30:=[[-23.679995733,30.000024272,64.999939178],[0.000000004,0,1,0.000000007],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_40:=[[115.150327174,-270.121311005,64.999168931],[-0.000000015,0.486157298,0.873871319,-0.000000026],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_50:=[[126.149993321,-600.000025812,64.999544619],[0.000000008,0.4861829,0.873857075,-0.000000029],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_51:=[[126.149993351,-600.000025877,64.999935931],[0,0.707106797,0.707106766,-0.000000016],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !***********************************************************
+    !
+    ! Módulo:  Module1
+    !
+    ! Descripción:
+    !   <Introduzca la descripción aquí>
+    !
+    ! Autor: Admin
+    !
+    ! Versión: 1.0
+    !
+    !***********************************************************
+    
+    
+    !***********************************************************
+    !
+    ! Procedimiento Main
+    !
+    !   Este es el punto de entrada de su programa
+    !
+    !***********************************************************
+    PROC main()
+        Ciclo_cuchara:
+        Pick_cuchara;
+        Place_cuchara;
+        GOTO Ciclo_cuchara;
+    ENDPROC
+    PROC Pick_cuchara()
+        MoveJ Target_10,v600,z10,TCP_Ventosa\WObj:=Workobject_Cuchara;
+        MoveL Target_20,v150,z1,TCP_Ventosa\WObj:=Workobject_Cuchara;
+        MoveL Target_30,v150,z1,TCP_Ventosa\WObj:=Workobject_Cuchara;
+    ENDPROC
+    PROC Place_cuchara()
+        MoveJ Target_40,v600,z10,TCP_Ventosa\WObj:=Workobject_Cuchara;
+        MoveL Target_50,v300,z1,TCP_Ventosa\WObj:=Workobject_Cuchara;
+        MoveL Target_51,v300,z1,TCP_Ventosa\WObj:=Workobject_Cuchara;
+        MoveL Target_50,v300,z1,TCP_Ventosa\WObj:=Workobject_Cuchara;
+        MoveL Target_40,v300,z1,TCP_Ventosa\WObj:=Workobject_Cuchara;
+    ENDPROC
+ENDMODULE

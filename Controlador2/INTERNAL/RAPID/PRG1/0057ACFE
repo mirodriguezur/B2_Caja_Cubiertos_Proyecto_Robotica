@@ -1,0 +1,47 @@
+MODULE Module1
+        CONST robtarget Target_10:=[[17.680001867,29.000010274,64.999168118],[0.000000019,1,-0.000000001,-0.000000013],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_20:=[[17.680005,29.000006044,6.999955902],[0.000000007,1,0,-0.000000004],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_30:=[[17.680001867,29.000010274,64.999168118],[-0.000000019,1,-0.000000001,-0.000000013],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_40:=[[-150.202171532,-270.144946432,64.99916005],[-0.000000007,0.871854368,0.489765211,0.000000003],[0,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_50:=[[-140.200013899,-600.000004341,64.999949592],[0.000000013,0.871855673,0.489762887,0.000000004],[0,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_51:=[[-140.200013899,-600.000004341,64.999949592],[0.000000014,0.707106787,0.707106776,0],[0,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+!***********************************************************
+    !
+    ! Módulo:  Module1
+    !
+    ! Descripción:
+    !   <Introduzca la descripción aquí>
+    !
+    ! Autor: Admin
+    !
+    ! Versión: 1.0
+    !
+    !***********************************************************
+    
+    
+    !***********************************************************
+    !
+    ! Procedimiento Main
+    !
+    !   Este es el punto de entrada de su programa
+    !
+    !***********************************************************
+    PROC main()
+        Ciclo_tenedor:
+        Pick_tenedor;
+        Place_tenedor;
+        GOTO Ciclo_tenedor;
+    ENDPROC
+    PROC Pick_tenedor()
+        MoveJ Target_10,v600,z10,TCP_Ventosa\WObj:=Workobject_Tenedor;
+        MoveL Target_20,v150,z1,TCP_Ventosa\WObj:=Workobject_Tenedor;
+        MoveL Target_30,v150,z1,TCP_Ventosa\WObj:=Workobject_Tenedor;
+    ENDPROC
+    PROC Place_tenedor()
+        MoveJ Target_40,v600,z10,TCP_Ventosa\WObj:=Workobject_Tenedor;
+        MoveL Target_50,v300,z1,TCP_Ventosa\WObj:=Workobject_Tenedor;
+        MoveL Target_51,v300,z1,TCP_Ventosa\WObj:=Workobject_Tenedor;
+        MoveL Target_50,v300,z1,TCP_Ventosa\WObj:=Workobject_Tenedor;
+        MoveL Target_40,v300,z1,TCP_Ventosa\WObj:=Workobject_Tenedor;
+    ENDPROC
+ENDMODULE
