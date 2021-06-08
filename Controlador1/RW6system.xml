@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<system creation-date="2021-06-07 23:15:00.002000" desc="" enable="False" id="49F7AA1E-FCC3-4FD0-9050-C2513AD325F9" last-modified-date="" name="Controlador1"><applications><application name="RobotWare" version="6.04.0140"><settings><system-xml path="C:\proyecto_robotica\Proyecto local\Controlador1\system.xml" /><key-id path="C:\proyecto_robotica\Proyecto local\Controlador1\INTERNAL\key.id" /><setting-file path="C:\proyecto_robotica\Proyecto local\Controlador1\INTERNAL\controller.rsf" /></settings></application></applications></system>
