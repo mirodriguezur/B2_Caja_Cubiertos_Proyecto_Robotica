@@ -28,6 +28,10 @@ MODULE Module1
     !   Este es el punto de entrada de su programa
     !
     !***********************************************************
+    !Declaración de variables de interrupción
+    
+    VAR intnum int_buttonStopDI;                           !intnum comando que identifica interrupcion de parada de emergencia.
+    
     PROC main()
         !Añada aquí su código
         setDO Start6_Controlador,0;
@@ -37,6 +41,9 @@ MODULE Module1
         SetDO Rutina,0;
         ciclo_inicio_cuchara:
         IF cubiertos_6=high THEN
+            IDelete int_buttonStopDI;                          !Cancela interrupcion, necesario cuando el ciclo se repite.                
+            CONNECT int_buttonStopDI WITH parada_emergencia;   !Se conecta la rutina TRAP con la interrupicion parada_emergencia
+            iSignalDI Stop_button, 1, int_buttonStopDI;         !Se asocia buttonStop con la interrupcion parada_emergencia
             setDO Start6_Controlador,1;
             !setDO Start6_Controlador, 0;
             contador:=6;
@@ -45,6 +52,9 @@ MODULE Module1
             WaitTime 1.5;
             SetDO Rutina,0;
         ELSEIF cubiertos_10=high THEN
+            IDelete int_buttonStopDI;                          !Cancela interrupcion, necesario cuando el ciclo se repite.                
+            CONNECT int_buttonStopDI WITH parada_emergencia;   !Se conecta la rutina TRAP con la interrupicion parada_emergencia
+            iSignalDI Stop_button, 1, int_buttonStopDI;         !Se asocia buttonStop con la interrupcion parada_emergencia
             setDO Start10_Controlador,1;
             !setDO Start10_Controlador, 0;
             contador:=10;
@@ -53,6 +63,9 @@ MODULE Module1
             WaitTime 1.5;
             SetDO Rutina,0;
         ELSEIF cubiertos_12=high THEN
+            IDelete int_buttonStopDI;                          !Cancela interrupcion, necesario cuando el ciclo se repite.                
+            CONNECT int_buttonStopDI WITH parada_emergencia;   !Se conecta la rutina TRAP con la interrupicion parada_emergencia
+            iSignalDI Stop_button, 1, int_buttonStopDI;         !Se asocia buttonStop con la interrupcion parada_emergencia
             setDO Start12_Controlador,1;
             !setDO Start12_Controlador, 0;
             contador:=12;
@@ -84,6 +97,37 @@ MODULE Module1
             MoveL Target_50,v300,z1,TCP_Ventosa\WObj:=Workobject_1;
             MoveL Target_40,v300,z1,TCP_Ventosa\WObj:=Workobject_1;
             contador:=contador-1;
+            IF contador=0 THEN
+                IF cubiertos_6=high THEN
+                   contador:=6;
+                   SetDO Rutina,1;
+                   WaitTime 1.5;
+                   SetDO Rutina,0;
+                ELSEIF cubiertos_10=high THEN
+                   contador:=10;
+                   SetDO Rutina,1;
+                   WaitTime 1.5;
+                   SetDO Rutina,0;
+                ELSEIF cubiertos_12=high THEN
+                   contador:=12;
+                   SetDO Rutina,1;
+                   WaitTime 1.5;
+                   SetDO Rutina,0;
+                ENDIF
+            ENDIF
         ENDWHILE
     ENDPROC
+    
+    TRAP parada_emergencia                              !Interrupcion parada_emergencia
+        StopMove;                                       !Detiene movimento de robot
+        SetDO Rutina,0;
+        !IF buttonStop=low THEN
+        !    StartMove;
+        !ELSE 
+        !    parada_emergencia:
+        !ENDIF
+        WHILE Stop_button = high DO                      !Mientras siga activo pulsador buttonStop, el programa seguirá detenido
+        ENDWHILE                                        
+        StartMove;                                      !Si se desactiva pulsador buttonStop, el programa continua donde quedó.
+    ENDTRAP
 ENDMODULE
