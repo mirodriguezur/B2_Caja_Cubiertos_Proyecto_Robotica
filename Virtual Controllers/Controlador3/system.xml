@@ -15,8 +15,6 @@
     </Option>
     <Option descr="604-1 MultiMove Coordinated">
     </Option>
-    <Option descr="617-1 FlexPendant Interface">
-    </Option>
   </ControlModule>
   <DriveModule>
     <Name>Robot1</Name>
