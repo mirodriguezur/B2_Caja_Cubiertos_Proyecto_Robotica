@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Metadata Version="1">
+  <Id>dddc032b74dc45caa31e15e433beb27b</Id>
+  <Name>Recording-5</Name>
+  <EventCount>1</EventCount>
+  <StartedUtc>2021-07-31T22:53:39.5325205Z</StartedUtc>
+  <EndedUtc>2021-07-31T22:53:48.8874975Z</EndedUtc>
+  <TotalTime>0</TotalTime>
+  <Signals />
+  <Sources>
+    <Source type="Station" id="{62514582-182c-47f5-8f06-0304e9bb331f}" displayName="Proyecto_Final_B2" />
+  </Sources>
+</Metadata>
